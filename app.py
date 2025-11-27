@@ -1,18 +1,24 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
+import os  # <--- 1. Agregamos esta librería para manejar rutas
 
-# Configuración de la página 
+# Configuración de la página
 st.set_page_config(page_title="Autoridades Locales", layout="wide")
 
 # Carga de imagen lateral
-try:
-    with open(r"Consulta_municipal\logo_gobierno.gif","rb") as f:
-        image_data = f.read()
-        st.sidebar.image(image_data, width=200)
-except FileNotFoundError:
-    # Manejo simple de error por si la ruta cambia, para que no falle el script completo
-    st.sidebar.warning("Logo no encontrado en la ruta especificada.")
+# 2. Obtenemos la ruta exacta donde vive este archivo 'app.py'
+carpeta_actual = os.path.dirname(os.path.abspath(__file__))
+
+# 3. Unimos esa ruta con el nombre de tu imagen
+ruta_logo = os.path.join(carpeta_actual, "logo_gobierno.gif")
+
+# 4. Intentamos cargar la imagen directamente usando la ruta
+if os.path.exists(ruta_logo):
+    st.sidebar.image(ruta_logo, width=200)
+else:
+    # Manejo de error si el archivo no existe
+    st.sidebar.warning(f"No se encontró el logo en: {ruta_logo}")
 
 st.sidebar.markdown("---") # Separador visual
 st.sidebar.subheader("Enlaces de interés")
@@ -157,3 +163,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
