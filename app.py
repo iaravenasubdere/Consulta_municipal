@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
-import os  # <--- 1. Agregamos esta librería para manejar rutas
+import os 
 
 # Configuración de la página
 st.set_page_config(page_title="Autoridades Locales", layout="wide")
@@ -163,4 +163,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
