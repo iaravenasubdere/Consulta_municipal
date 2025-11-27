@@ -7,7 +7,7 @@ st.set_page_config(page_title="Autoridades Locales", layout="wide")
 
 # Carga de imagen lateral
 try:
-    with open(r"C:\Users\iaravena\Documents\consulta_autoridades\logo_gobierno.gif","rb") as f:
+    with open(r"Consulta_municipal\logo_gobierno.gif","rb") as f:
         image_data = f.read()
         st.sidebar.image(image_data, width=200)
 except FileNotFoundError:
@@ -155,4 +155,5 @@ def main():
             st.caption("Fuente: SINIM 2025")        
 
 if __name__ == "__main__":
+
     main()
